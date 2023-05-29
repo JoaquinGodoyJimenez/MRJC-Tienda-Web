@@ -1,6 +1,6 @@
 <section class="vh-100">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-sm-6 text-black">
             
                 <div class="px-5 ms-xl-4">
@@ -26,7 +26,7 @@
                         </div>
 
                         <p class="small mb-5 pb-lg-2"><a class="text-muted" href="login.php?action=forgot">Olvidé la contraseña</a></p>
-                        <p>¿No tienes una cuenta? <a href="#!" class="link-info">Regístrate aquí</a></p>
+                        <!--<p>¿No tienes una cuenta? <a href="#!" class="link-info">Regístrate aquí</a></p>-->
 
                     </form>
 

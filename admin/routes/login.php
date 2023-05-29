@@ -52,10 +52,10 @@ switch ($action) {
             $correo=$_POST['correo'];
             $cantidad=$sistema->loginSend($correo);
             if ($cantidad) {
-                $sistema->flash('success', "Sí se envió");
+                $sistema->flash('success', "Si el correo se encuentra registrado le enviaremos un correo electrónico.");
                 include('../views/login/index.php');
             } else {
-                $sistema->flash('warning', "Tal vez se envió");
+                $sistema->flash('warning', "Si el correo se encuentra registrado le enviaremos un correo electrónico.");
                 include('../views/login/index.php');
             }
         }           

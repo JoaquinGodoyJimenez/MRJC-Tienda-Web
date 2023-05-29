@@ -197,11 +197,8 @@ class Sistema{
             $st->bindParam(":correo", $correo, PDO::PARAM_STR);
             $st->execute();
             $data = $st->fetchAll(PDO::FETCH_ASSOC);
-            /*print_r($data);
-            die();*/
             if(isset($data[0])){
                 $token=$this->generarToken($correo);
-                //die($token);
                 $sql2='update usuario set token = :token where correo = :correo';    
                 $st2=$this->db->prepare($sql2);          
                 $st2->bindParam(":token", $token, PDO::PARAM_STR);
