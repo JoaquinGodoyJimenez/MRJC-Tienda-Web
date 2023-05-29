@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Sistema</a>
+    <a class="navbar-brand" href="../routes/">Sistema</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,7 +21,6 @@
             <li><a class="dropdown-item" href="../routes/categoria.php">Categorias</a></li>
             <li><a class="dropdown-item" href="../routes/empleado.php">Empleados</a></li>
             <li><a class="dropdown-item" href="../routes/marca.php">Marcas</a></li>
-            <li><a class="dropdown-item" href="../routes/marca_categoria.php">Categorias de marcas</a></li>
             <li><a class="dropdown-item" href="../routes/pago.php">Pagos</a></li>
             <li><a class="dropdown-item" href="../routes/privilegio.php">Privilegios</a></li>
             <li><a class="dropdown-item" href="../routes/producto.php">Productos</a></li>
@@ -29,11 +28,12 @@
             <li><a class="dropdown-item" href="../routes/rol.php">Roles</a></li>
             <li><a class="dropdown-item" href="../routes/tienda.php">Tiendas</a></li>
             <li><a class="dropdown-item" href="../routes/usuario.php">Usuarios</a></li>
-            <li><a class="dropdown-item" href="../routes/usuario_rol.php">Roles de usuarios</a></li>
             <li><a class="dropdown-item" href="../routes/venta.php">Ventas</a></li>
-            <li><a class="dropdown-item" href="../routes/venta_detalle.php">Detalles de ventas</a></li>
             <!--  Linea separadora  <li><hr class="dropdown-divider"></li>-->
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.php?action=logout">Logout</a>
         </li>
         <!-- 
         <li class="nav-item">
