@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-sm-6 px-0 d-none d-sm-block">
-                <img src="../images/login.jpg" alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+                <img src="../images/forgotpassword.jpg" alt="Forgot password image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
             </div>
         </div>
     </div>

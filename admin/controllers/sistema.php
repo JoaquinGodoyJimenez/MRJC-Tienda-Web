@@ -2,6 +2,9 @@
 session_start();
 require_once(__DIR__.'/../config.php');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
 class Sistema{
     var $db = null;
     public function db()
@@ -253,7 +256,31 @@ class Sistema{
     public function forgot($destinatario,$token)
     {
         if ($this->validate_Email($destinatario)) {
-            
+            require '../../vendor/autoload.php';
+            $mail = new PHPMailer();
+            $mail->isSMTP();
+            $mail->SMTPDebug = SMTP::DEBUG_OFF;
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Port = 465;
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->SMTPAuth = true;
+            $mail->Username = 'mrjctienda@gmail.com';
+            $mail->Password = 'zgqszxnbifectvpt';
+            $mail->setFrom('mrjctienda@gmail.com', 'Renata Jimenez');
+            $mail->addReplyTo('mrjctienda@gmail.com', 'Renata Jimenez');
+            $mail->addAddress($destinatario, 'Sistema de la tienda');
+            $mail->Subject = 'Recuperacion de password';
+            $mensaje = " 
+            Estimado usuario. <br>
+            Presione <a href=\"http://localhost/mrjc-Tienda/admin/routes/login.php?action=recovery&token=$token&correo=$destinatario\">aquí</a> para recuperar la contraseña. <br>
+            Atentamente la tienda.
+            ";
+            $mail->msgHTML('Hola ' . $mensaje);
+            /*if (!$mail->send()) {
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+                echo 'Message sent!';
+            }*/
         }
     }
 }

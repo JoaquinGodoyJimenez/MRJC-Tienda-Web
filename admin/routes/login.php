@@ -31,19 +31,18 @@ switch ($action) {
             if(isset($data['correo']) and isset($data['token']) and isset($data['contrasena'])){
                 if($sistema->validateToken($data['correo'],$data['token'])){
                     if($sistema->resetPassword($data['correo'],$data['token'],$data['contrasena'])){
-                        $sistema->flash('success', 'Contrasenia actualizada con excito');
+                        $sistema->flash('success', 'Contraseña actualizada');
                         include_once('../views/login/index.php');
                     } else{
-                        $sistema->flash('warning', 'Contacta a soporte técnico o reinicia el proceso 
-                        especificando su correo electrónico');
+                        $sistema->flash('warning', 'Contacta a soporte técnico o intenta otra vez más tarde.');
                         include_once('../views/login/forgot.php');
                     }
                 }else{
-                    $sistema->flash('danger', 'el Token expiró');
+                    $sistema->flash('danger', 'El tiempo para cambiar la contraseña se ha agotado.');
                     include_once('../views/login/index.php');
                 }
             } else{
-                $sistema->flash('danger','URL no puede ser completada como la requirio');
+                $sistema->flash('danger','El URL no pudo ser completado como se requirió.');
                 include_once('../views/login/index.php');
             }
     break;
