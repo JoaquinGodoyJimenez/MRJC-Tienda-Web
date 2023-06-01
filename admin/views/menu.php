@@ -1,50 +1,85 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="../routes/">Sistema</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- 
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+<nav>
+    <ul>
+        <li>
+            <a href="../routes/index.php" class="logo">
+                <img src="../images/logo.png" alt="logo">
+                <span class="nav-item">Tienda</span>
+            </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>-->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Datos
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">            
-            <li><a class="dropdown-item" href="../routes/categoria.php">Categorias</a></li>
-            <li><a class="dropdown-item" href="../routes/empleado.php">Empleados</a></li>
-            <li><a class="dropdown-item" href="../routes/marca.php">Marcas</a></li>
-            <li><a class="dropdown-item" href="../routes/pago.php">Pagos</a></li>
-            <li><a class="dropdown-item" href="../routes/privilegio.php">Privilegios</a></li>
-            <li><a class="dropdown-item" href="../routes/producto.php">Productos</a></li>
-            <li><a class="dropdown-item" href="../routes/proveedor.php">Proveedores</a></li>
-            <li><a class="dropdown-item" href="../routes/rol.php">Roles</a></li>
-            <li><a class="dropdown-item" href="../routes/tienda.php">Tiendas</a></li>
-            <li><a class="dropdown-item" href="../routes/usuario.php">Usuarios</a></li>
-            <li><a class="dropdown-item" href="../routes/venta.php">Ventas</a></li>
-            <!--  Linea separadora  <li><hr class="dropdown-divider"></li>-->
-          </ul>
+        <li><hr class="dropdown-divider"></li>
+        <li>
+            <a href="../routes/categoria.php" class="navbaritem">
+                <i class="fas fa-tags"></i>
+                <span class="nav-item">Categorias</span>
+            </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login.php?action=logout">Logout</a>
+        <li>
+            <a href="../routes/empleado.php" class="navbaritem">
+                <i class="fas fa-users"></i>
+                <span class="nav-item">Empleados</span>
+            </a>
         </li>
-        <!-- 
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>-->
-      </ul>
-      <!-- 
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>-->
-    </div>
-  </div>
+        <li>
+            <a href="../routes/marca.php" class="navbaritem">
+                <i class="fas fa-shopping-basket"></i>
+                <span class="nav-item">Marcas</span>
+            </a>
+        </li>
+        <li>
+            <a href="../routes/pago.php" class="navbaritem">
+                <i class="fas fa-credit-card"></i>
+                <span class="nav-item">Pagos</span>
+            </a>
+        </li>
+        <li>
+            <a href="../routes/privilegio.php" class="navbaritem">
+                <i class="fas fa-lock"></i>
+                <span class="nav-item">Privilegios</span>
+            </a>
+        </li>
+        <li>
+            <a href="../routes/producto.php" class="navbaritem">
+                <i class="fas fa-cubes"></i>
+                <span class="nav-item">Productos</span>
+            </a>
+        </li>
+        <li>
+            <a href="../routes/proveedor.php" class="navbaritem">
+                <i class="fas fa-truck"></i>
+                <span class="nav-item">Proveedores</span>
+            </a>
+        </li>
+        <li>
+            <a href="../routes/rol.php" class="navbaritem">
+                <i class="fas fa-user-lock"></i>
+                <span class="nav-item">Roles</span>
+            </a>
+        </li>
+        <!-- -->
+        <li>
+            <a href="../routes/tienda.php" class="navbaritem">
+                <i class="fas fa-store"></i>
+                <span class="nav-item">Tiendas</span>
+            </a>
+        </li>
+        <li>
+            <a href="../routes/usuario.php" class="navbaritem">
+                <i class="fas fa-user"></i>
+                <span class="nav-item">Usuarios</span>
+            </a>
+        </li>
+        <li>
+            <a href="../routes/venta.php" class="navbaritem">
+                <i class="fas fa-dollar-sign"></i>
+                <span class="nav-item">Ventas</span>
+            </a>
+        </li>
+        <li>
+            <a href="login.php?action=logout" class="logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="nav-item">Cerrar sesión</span>
+            </a>
+        </li>
+        <li><hr class="dropdown-divider"></li>
+    </ul>
 </nav>

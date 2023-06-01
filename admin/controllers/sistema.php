@@ -59,7 +59,10 @@ class Sistema{
                 if ($this->validate_Email($correo)) {
                     $contrasena = md5($contrasena);
                     $this->db();
-                    $sql = 'select id_usuario,correo from usuario where correo=:correo and contrasena=:contrasena';
+                    $sql = 'SELECT u.id_usuario, u.correo, u.usuario, u.nombre, t.tienda, t.id_tienda 
+                    from usuario u LEFT JOIN empleado e ON e.id_usuario = u.id_usuario 
+                    LEFT JOIN tienda t ON t.id_tienda = e.id_empleado
+                    WHERE u.correo=:correo AND u.contrasena=:contrasena';
                     $st = $this->db->prepare($sql);
                     $st->bindParam(":correo", $correo, PDO::PARAM_STR);
                     $st->bindParam(":contrasena", $contrasena, PDO::PARAM_STR);

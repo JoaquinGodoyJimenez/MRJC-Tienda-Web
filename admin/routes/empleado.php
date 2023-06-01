@@ -1,6 +1,7 @@
 <?php
 require_once("../controllers/empleado_controller.php");
 require_once("../controllers/tienda_controller.php");
+require_once("../controllers/usuario_controller.php");
 include_once("../views/header.php");
 include_once("../views/menu.php");
 
@@ -9,6 +10,7 @@ $id = (isset($_GET['id'])) ? $_GET['id'] : null;
 
 switch ($action) {
     case 'new':
+        $dataUsuarios = $usuario->get(null);
         $dataTiendas = $tienda->get(null);
         if (isset($_POST['enviar'])) {
             $data = $_POST['data'];
@@ -39,6 +41,7 @@ switch ($action) {
         }
         break;
     case 'edit':
+        $dataUsuarios = $usuario->get(null);
         $dataTiendas = $tienda->get(null);
         if (isset($_POST['enviar'])) {
             $data = $_POST['data'];

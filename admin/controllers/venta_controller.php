@@ -13,20 +13,22 @@ class Venta extends Sistema{
     public function get($id = null){        
         $this->db();
         if (is_null($id)){
-            $sql = "SELECT v.id_venta, v.fecha, u.id_usuario, u.usuario, 
-            u.nombre, t.id_tienda, t.tienda, t.direccion, e.id_empleado, e.empleado 
+            $sql = "SELECT v.id_venta, v.fecha, u.id_usuario, u.usuario, u.nombre AS nombre, 
+            t.id_tienda, t.tienda, t.direccion, e.id_empleado, ue.nombre AS empleado 
             FROM venta AS v LEFT JOIN usuario AS u ON u.id_usuario = v.id_usuario 
             LEFT JOIN tienda AS t ON t.id_tienda = v.id_tienda 
-            LEFT JOIN empleado AS e ON e.id_empleado = v.id_empleado;";
+            LEFT JOIN empleado AS e ON e.id_empleado = v.id_empleado 
+            LEFT JOIN usuario AS ue ON ue.id_usuario = e.id_usuario;";
             $st = $this->db->prepare($sql);
             $st->execute();
             $data = $st->fetchAll(PDO::FETCH_ASSOC);
         }else{
-            $sql = "SELECT v.id_venta, v.fecha, u.id_usuario, u.usuario, 
-            u.nombre, t.id_tienda, t.tienda, t.direccion, e.id_empleado, e.empleado 
+            $sql = "SELECT v.id_venta, v.fecha, u.id_usuario, u.usuario, u.nombre AS nombre, 
+            t.id_tienda, t.tienda, t.direccion, e.id_empleado, ue.nombre AS empleado 
             FROM venta AS v LEFT JOIN usuario AS u ON u.id_usuario = v.id_usuario 
             LEFT JOIN tienda AS t ON t.id_tienda = v.id_tienda 
             LEFT JOIN empleado AS e ON e.id_empleado = v.id_empleado 
+            LEFT JOIN usuario AS ue ON ue.id_usuario = e.id_usuario
             WHERE v.id_venta=:id;";
             $st = $this->db->prepare($sql);
             $st->bindParam(":id", $id, PDO::PARAM_INT);

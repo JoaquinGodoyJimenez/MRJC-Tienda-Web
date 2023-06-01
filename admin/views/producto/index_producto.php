@@ -1,14 +1,10 @@
-<h1 class="text-center">Productos</h1>
+<h1 class="text-center">Productos
+    <a class="btn btn-success" href="producto.php?action=new" role="button">Añadir producto</a>
+</h1>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3">
-            <p><a class="btn btn-success" href="producto.php?action=new" role="button">Ingresar un producto nuevo</a>
-            </p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
+        <div class="col-1"></div>
+            <div class="col">
             <table class="table table-responsive table-bordered">
                 <thead>
                     <tr>
@@ -72,7 +68,8 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
-            No. productos: <?php echo $nReg ?>.
+            <b>Total productos:</b> <?php echo $nReg ?>.
         </div>
+        <div class="col-1"></div>
     </div>
 </div>

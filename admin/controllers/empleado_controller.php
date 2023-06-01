@@ -14,13 +14,14 @@ class Empleado extends Sistema{
         $this->db();
         if (is_null($id)){
             $sql = "select * from empleado e  left join tienda t 
-            on e.id_tienda = t.id_tienda ";
+            on e.id_tienda = t.id_tienda left join usuario u on u.id_usuario = e.id_usuario ";
             $st = $this->db->prepare($sql);
             $st->execute();
             $data = $st->fetchAll(PDO::FETCH_ASSOC);
         }else{
             $sql = "select * from empleado e  left join tienda t 
-            on e.id_tienda = t.id_tienda where e.id_tienda=:id;";
+            on e.id_tienda = t.id_tienda left join usuario u on u.id_usuario = e.id_usuario 
+            where e.id_empleado=:id;";
             $st = $this->db->prepare($sql);
             $st->bindParam(":id", $id, PDO::PARAM_INT);
             $st->execute();
@@ -37,12 +38,12 @@ class Empleado extends Sistema{
     public function new ($data){        
         $this->db();
 
-        $sql = "INSERT INTO empleado ( empleado, id_tienda) 
-        VALUES (:empleado, :id_tienda)";
+        $sql = "INSERT INTO empleado (id_tienda, id_usuario) 
+        VALUES (:id_tienda, :id_usuario)";
 
         $st = $this->db->prepare($sql);
-        $st->bindParam(":empleado", $data['empleado'], PDO::PARAM_STR);
         $st->bindParam(":id_tienda", $data['id_tienda'], PDO::PARAM_INT);
+        $st->bindParam(":id_usuario", $data['id_usuario'], PDO::PARAM_INT);
 
         $st->execute();
 
@@ -76,14 +77,15 @@ class Empleado extends Sistema{
         $this->db();
 
         $sql = "UPDATE empleado 
-            SET empleado =:empleado,
-            id_tienda =:id_tienda
+            SET id_tienda =:id_tienda,
+            id_usuario = :id_usuario
             where id_empleado =:id";
         
         $st = $this->db->prepare($sql);
         $st->bindParam(":id", $id, PDO::PARAM_INT);
-        $st->bindParam(":empleado", $data['empleado'], PDO::PARAM_STR);
         $st->bindParam(":id_tienda", $data['id_tienda'], PDO::PARAM_INT);
+        $st->bindParam(":id_usuario", $data['id_usuario'], PDO::PARAM_INT);
+        
         $st->execute();
         $rc = $st->rowCount();
         return $rc;

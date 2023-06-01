@@ -1,4 +1,4 @@
-<h1>
+<h1 class="text-center">
     <?php echo ($action == 'edit') ? 'Modificar' : 'Nuevo'; ?> pago
 </h1>
 
@@ -6,33 +6,43 @@
     enctype="multipart/form-data">
 
     <div class="row">
-        <div class="col-2">
+        <div class="col-1"></div>
+        <div class="col-4">
             <label for="id_venta">Fecha:</label>
         </div>
     </div>
 
-    <div class="col-2">
-        <input type="date" name="data[fecha]" class="form-control" value="<?php echo isset($data[0]['fecha']) ? $data[0]['fecha'] : ''; ?>" required />
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-4">
+            <input type="date" name="data[fecha]" class="form-control" value="<?php echo isset($data[0]['fecha']) ? $data[0]['fecha'] : ''; ?>" required />
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-2">
+        <div class="col-1"></div>
+        <div class="col-4">
             <label for="id_venta">Monto:</label>
         </div>
     </div>
 
-    <div class="col-2">
-        <input type="number" step="0.5" min="0" name="data[monto]" placeholder="Monto" class="form-control" value="<?php echo isset($data[0]['monto']) ? $data[0]['monto'] : ''; ?>" required />
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-4">
+            <input type="number" step="0.5" min="0" name="data[monto]" placeholder="Monto" class="form-control" value="<?php echo isset($data[0]['monto']) ? $data[0]['monto'] : ''; ?>" required />
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-2">
+        <div class="col-1"></div>
+        <div class="col-4">
             <label for="id_venta">Venta:</label>
         </div>
     </div>
     <div class="row">
-        <div class="col-2">
-            <select name="data[id_venta]" required="required">
+        <div class="col-1"></div>
+        <div class="col-4">
+            <select name="data[id_venta]" required="required" class="form-control">
                 <?php
                 $selected = " ";
                 foreach ($dataVentas as $key => $tnd):
@@ -52,7 +62,8 @@
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-1"></div>
+        <div class="col-4">
             <input type="submit" class="btn btn-primary mb-3" name="enviar" value="Guardar">
         </div>
     </div>

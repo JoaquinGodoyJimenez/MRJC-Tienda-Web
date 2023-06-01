@@ -1,14 +1,10 @@
-<h1 class="text-center">Empleados</h1>
+<h1 class="text-center">Empleados
+    <a class="btn btn-success" href="empleado.php?action=new" role="button">Añadir empleado</a>
+</h1>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3">
-            <p><a class="btn btn-success" href="empleado.php?action=new" role="button">Ingresar un empleado nuevo</a>
-            </p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
+        <div class="col-1"></div>
+        <div class="col">
             <table class="table table-responsive table-bordered">
                 <thead>
                     <tr>
@@ -27,7 +23,7 @@
                                 <?php echo $empleado["id_empleado"] ?>
                             </td>
                             <td>
-                                <?php echo $empleado["empleado"] ?>
+                                <?php echo $empleado["nombre"] ?>
                             </td>
                             <td>
                                 <?php echo $empleado["tienda"] ?>
@@ -43,19 +39,10 @@
                             </td>
                         </tr>
                     <?php endforeach ?>
-                    <tr>
-                        <th scope="row"></th>
-                        <th scope="row"></th>
-                        <th scope="row"></th>
-
-                        <th>
-                            No. empleados:
-                            <?php echo $nReg ?>.
-                        </th>
-                    </tr>
                 </tbody>
             </table>
-
+            <b>Total empleados:</b> <?php echo $nReg ?>.
         </div>
+        <div class="col-1"></div>
     </div>
 </div>

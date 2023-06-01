@@ -1,22 +1,19 @@
-<h1 class="text-center">Marcas</h1>
+<h1 class="text-center">Marcas 
+    <a class="btn btn-success" href="marca.php?action=new" 
+    role="button">Añadir marca</a>
+</h1>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3">
-            <p><a class="btn btn-success" href="marca.php?action=new" role="button">Ingresar un marca nueva</a>
-            </p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
+        <div class="col-1"></div>
+        <div class="col">
             <table class="table table-responsive table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col-md-1">ID</th>
-                        <th scope="col-md-3">Marca</th>
-                        <th scope="col-md-3">Proveedores</th>
-                        <th scope="col-md-3">Teléfono</th>
-                        <th scope="col-1">Operación</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Proveedores</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Operación</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +46,8 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
-            No. marcas: <?php echo $nReg ?>.
+            <b>Total marcas: </b><?php echo $nReg ?>.
         </div>
+        <div class="col-1"></div>
     </div>
 </div>

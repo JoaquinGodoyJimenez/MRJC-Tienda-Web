@@ -1,14 +1,10 @@
-<h1 class="text-center">Pagos</h1>
+<h1 class="text-center">Pagos 
+    <a class="btn btn-success" href="pago.php?action=new" role="button">Añadir pago</a>
+</h1>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3">
-            <p><a class="btn btn-success" href="pago.php?action=new" role="button">Ingresar un pago nuevo</a>
-            </p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
+    <div class="col-1"></div>
+        <div class="col">
             <table class="table table-responsive table-bordered">
                 <thead>
                     <tr>
@@ -53,22 +49,11 @@
                                 </div>
                             </td>
                         </tr>
-                    <?php endforeach ?>
-                    <tr>
-                        <th scope="row"></th>
-                        <th scope="row"></th>
-                        <th scope="row"></th>
-                        <th scope="row"></th>
-                        <th scope="row"></th>
-                        <th scope="row"></th>
-                        <th>
-                            No. pagos:
-                            <?php echo $nReg ?>.
-                        </th>
-                    </tr>
+                    <?php endforeach ?>              
                 </tbody>
             </table>
-
+            <b>Total pagos:</b> <?php echo $nReg ?>.
         </div>
+        <div class="col-1"></div>
     </div>
 </div>
