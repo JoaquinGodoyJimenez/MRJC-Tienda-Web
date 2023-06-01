@@ -1,4 +1,16 @@
 <h1 class="text-center">Nueva venta</h1>
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-4">
+        <h2 class="steps">1. Seleccione el cliente</h2>
+    </div>        
+</div>
+
+<div class="row">
+    <p></p>
+</div>
+
 <form class="container-fluid" method="POST" action="index.php?action=<?php echo ($action); ?>"
     enctype="multipart/form-data">
 

@@ -131,6 +131,14 @@ tr th {
 }
 
 .dashboarditem:hover {
-    color: rgb(85, 83, 83);
-    
+    color: orangered;
+}
+
+.steps{
+    color: orangered
+}
+
+.StaticRadius{
+    border-radius: 10px;
+    overflow: hidden;
 }

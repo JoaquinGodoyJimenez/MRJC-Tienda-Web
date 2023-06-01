@@ -103,6 +103,29 @@ class Index extends Sistema{
         $rc = $st->rowCount();
         return $rc;
     }
+    public function getSalesbyDay(){        
+        $this->db();
+        $sql = "SELECT fecha AS Dia, COUNT(*) AS Ventas FROM venta GROUP BY fecha ORDER BY fecha LIMIT 7;";
+        $st = $this->db->prepare($sql);
+        $st->execute();
+        $data = $st->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
+    public function motsSoldProducts(){        
+        $this->db();
+        $sql = "SELECT p.id_producto, p.producto, SUM(vd.cantidad) AS total
+                FROM producto p
+                INNER JOIN venta_detalle vd ON p.id_producto = vd.id_producto
+                INNER JOIN venta v ON vd.id_venta = v.id_venta
+                WHERE v.fecha >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)
+                GROUP BY p.id_producto, p.producto
+                ORDER BY total DESC LIMIT 10;";
+        $st = $this->db->prepare($sql);
+        $st->execute();
+        $data = $st->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
+
 }
 $index = new Index; 
 ?>
