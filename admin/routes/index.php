@@ -18,8 +18,13 @@ switch ($action) {
             $cantidad = $index->new($data);
             if ($cantidad) {
                 $index->flash('success', 'Venta dada de alta con éxito');
-                include("../views/dashboard/index_dashboard.php");
-                //include("../views/dashboard/form_detalles.php");
+                //Obtener datos de la venta.
+                $id_venta = $index->getLastID();
+                $data = $index->get($id_venta);
+                $data_producto = $venta->getDetails($id_venta);
+                //Mostrar los detalles.
+                include('../views/dashboard/index_detalles.php');
+                //$data_producto = $venta->getDetails($id);
             } else {
                 $index->flash('danger', 'Algo ha fallado');
                 include('../views/dashboard/form_venta.php');

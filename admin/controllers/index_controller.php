@@ -1,11 +1,16 @@
 <?php
 require_once("sistema.php");
 class Index extends Sistema{
-    public function getLastID(){
-        $this->db();
-        $id_venta = $this->db->lastInsertId();
-        return $id_venta;
-    }      
+    public function getLastID() {
+        $this->db(); // Configurar la conexión a la base de datos
+    
+        // Obtener el último ID de la tabla "venta"
+        $stmt = $this->db->query("SELECT MAX(id_venta) as last_id FROM venta");
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $last_id = $row['last_id'];
+    
+        return $last_id;
+    }
 
     public function get($id = null){        
         $this->db();
