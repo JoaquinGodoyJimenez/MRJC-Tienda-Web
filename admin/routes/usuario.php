@@ -2,7 +2,8 @@
 require_once("../controllers/usuario_controller.php");
 include_once("../views/header.php");
 include_once("../views/menu.php");
-//$usuario -> validateRol('Administrador');
+
+$usuario -> validateRol('Administrador');
 $action = (isset($_GET['action'])) ? $_GET['action'] : "getAll";
 $id = (isset($_GET['id'])) ? $_GET['id'] : null;
 $id_rol = (isset($_GET['id_rol'])) ? $_GET['id_rol'] : null;

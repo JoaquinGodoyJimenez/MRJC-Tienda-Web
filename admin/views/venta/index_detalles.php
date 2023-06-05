@@ -1,6 +1,14 @@
+<?php
+$totalProductos = sizeof($data_producto);
+$totalPagar = 0;
+foreach ($data_producto as $key => $producto) {
+    $totalPagar += $producto['precio_unitario'] * $producto['cantidad'];
+}
+?>
 <h1 class="text-center">
     Detalles de la venta
     <a href="venta.php?action=newdetails&&id=<?php echo $data[0]['id_venta']; ?>" class="btn btn-success"> Añadir producto </a>
+    <a href="reporte.php?action=detalle&&id=<?php echo $data[0]['id_venta']; ?>" class="btn btn-primary" target="_blank"> Imprimir</a>
 </h1>
 <div class="container-fluid">
     <div class="row">
@@ -81,7 +89,9 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <b>Total productos:<?php echo sizeof($data_producto); ?>.
+            <b>Total productos: </b><?php echo sizeof($data_producto); ?>.
+            <br>
+            <b>Total a pagar:</b> $<?php echo $totalPagar; ?>.
         </div>
         <div class="col-1"></div>
     </div>

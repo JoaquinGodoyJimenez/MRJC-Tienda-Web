@@ -109,7 +109,7 @@ class Venta extends Sistema{
         if (is_null($id)) {
             $sql = "SELECT vd.id_venta, vd.id_producto, v.fecha, v.id_usuario, 
             u.nombre, v.fecha, v.id_tienda, t.tienda, t.direccion, p.producto,
-            p.sku, vd.precio_unitario, vd.cantidad 
+            p.sku, p.precio AS precio_unitario, vd.cantidad 
             FROM venta_detalle AS vd 
             LEFT JOIN venta AS v on v.id_venta = vd.id_venta 
             LEFT JOIN producto AS p ON p.id_producto = vd.id_producto 
@@ -121,7 +121,7 @@ class Venta extends Sistema{
         } else {
             $sql = "SELECT vd.id_venta, vd.id_producto, v.fecha, v.id_usuario, 
             u.nombre, v.fecha, v.id_tienda, t.tienda, t.direccion, p.producto,
-            p.sku, vd.precio_unitario, vd.cantidad 
+            p.sku, p.precio AS precio_unitario, vd.cantidad 
             FROM venta_detalle AS vd 
             LEFT JOIN venta AS v on v.id_venta = vd.id_venta 
             LEFT JOIN producto AS p ON p.id_producto = vd.id_producto 
@@ -161,12 +161,11 @@ class Venta extends Sistema{
     public function newDetails($id, $data)
     {
         $this->db();
-        $sql = "insert into venta_detalle (id_venta, id_producto, cantidad, precio_unitario) values (:id_venta,:id_producto,:cantidad,:precio_unitario)";
+        $sql = "insert into venta_detalle (id_venta, id_producto, cantidad) values (:id_venta,:id_producto,:cantidad)";
         $st = $this->db->prepare($sql);
         $st->bindParam(":id_venta", $id, PDO::PARAM_INT);
         $st->bindParam(":id_producto", $data['id_producto'], PDO::PARAM_INT);
         $st->bindParam(":cantidad", $data['cantidad'], PDO::PARAM_INT);
-        $st->bindParam(":precio_unitario", $data['precio_unitario'], PDO::PARAM_STR);
         $st->execute();
         $rc = $st->rowCount();
         return $rc;

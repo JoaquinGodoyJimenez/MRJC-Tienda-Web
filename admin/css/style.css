@@ -19,7 +19,7 @@ ul {
 }
 
 nav{
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     height: 100%;
@@ -141,4 +141,8 @@ tr th {
 .StaticRadius{
     border-radius: 10px;
     overflow: hidden;
+}
+
+b{
+    color: darkcyan;
 }

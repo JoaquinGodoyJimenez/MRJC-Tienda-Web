@@ -61,7 +61,7 @@ class Sistema{
                     $this->db();
                     $sql = 'SELECT u.id_usuario, u.correo, u.usuario, u.nombre, t.tienda, t.id_tienda 
                     from usuario u LEFT JOIN empleado e ON e.id_usuario = u.id_usuario 
-                    LEFT JOIN tienda t ON t.id_tienda = e.id_empleado
+                    LEFT JOIN tienda t ON t.id_tienda = e.id_tienda
                     WHERE u.correo=:correo AND u.contrasena=:contrasena';
                     $st = $this->db->prepare($sql);
                     $st->bindParam(":correo", $correo, PDO::PARAM_STR);
@@ -167,12 +167,22 @@ class Sistema{
     }
 }
 
+    public function verificarSesion()
+    {
+        if (!isset($_SESSION['validado']) || !$_SESSION['validado']) {
+            $this->killApp('No has iniciado sesión');
+        }
+    }
+
+
     public function killApp($mensaje)
     {
         ob_end_clean();
         include("../views/header_error.php");
         $this->flash('danger', $mensaje);
         include("../views/footer_error.php");
+        $paginaDestino = "login.php";
+        echo '<html><head><meta http-equiv="refresh" content="1; url=' . $paginaDestino . '"></head><body></body></html>';
         die();
     }
     public function logout()
@@ -279,11 +289,11 @@ class Sistema{
             Atentamente la tienda.
             ";
             $mail->msgHTML('Hola ' . $mensaje);
-            /*if (!$mail->send()) {
-                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            if (!$mail->send()) {
+                //echo 'Mailer Error: ' . $mail->ErrorInfo;
             } else {
-                echo 'Message sent!';
-            }*/
+                //echo 'Message sent!';
+            }
         }
     }
 }

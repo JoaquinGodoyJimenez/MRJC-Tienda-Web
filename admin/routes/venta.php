@@ -6,6 +6,7 @@ require_once("../controllers/empleado_controller.php");
 include_once("../views/header.php");
 include_once("../views/menu.php");
 
+$venta -> validateRol('Administrador');
 $action = (isset($_GET["action"])) ? $_GET["action"] : null;
 $id = (isset($_GET['id'])) ? $_GET['id'] : null;
 $id_producto = (isset($_GET['id_producto'])) ? $_GET['id_producto'] : null;

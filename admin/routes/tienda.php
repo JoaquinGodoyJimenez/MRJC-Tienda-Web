@@ -2,7 +2,8 @@
 require_once("../controllers/tienda_controller.php");
 include_once("../views/header.php");
 include_once("../views/menu.php");
-//$tienda -> validateRol('Administrador');
+
+$tienda -> validateRol('Administrador');
 $action = (isset($_GET['action'])) ? $_GET['action'] : "getAll";
 $id = (isset($_GET['id'])) ? $_GET['id'] : null;
 

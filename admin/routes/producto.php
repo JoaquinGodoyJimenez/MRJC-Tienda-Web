@@ -5,6 +5,7 @@ require_once("../controllers/categoria_controller.php");
 include_once("../views/header.php");
 include_once("../views/menu.php");
 
+$producto -> validateRol('Administrador');
 $action = (isset($_GET["action"])) ? $_GET["action"] : null;
 $id = (isset($_GET['id'])) ? $_GET['id'] : null;
 

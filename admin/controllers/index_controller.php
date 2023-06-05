@@ -75,6 +75,17 @@ class Index extends Sistema{
 
             $rc = $st->rowCount();
 
+            $sql ="INSERT INTO pago (fecha, monto, id_venta) VALUES (:fecha, :monto, :id_venta)";
+            $st = $this->db->prepare($sql);           
+            $monto = $data['cantidad'] * $data['precio_unitario'];
+            $st->bindParam(":fecha", $data['fecha'], PDO::PARAM_STR);
+            $st->bindParam(":monto", $monto, PDO::PARAM_STR);
+            $st->bindParam(":id_venta", $id_venta, PDO::PARAM_INT);
+
+            $st->execute();
+
+            $rc = $st->rowCount();
+
             $this->db->commit();
             return $rc;
         } catch (PDOException $e) {
@@ -129,6 +140,80 @@ class Index extends Sistema{
         $st->execute();
         $data = $st->fetchAll(PDO::FETCH_ASSOC);
         return $data;
+    }
+
+    public function deleteDetails($id_venta, $id_producto)
+    {
+        $this->db();
+        try {
+            $this->db->setAttribute(PDO::ATTR_AUTOCOMMIT, false);
+            $this->db->beginTransaction();
+
+            $sql = "SELECT (cantidad * precio_unitario) as monto  from venta_detalle where id_venta = :id_venta AND id_producto = :id_producto";
+            $st = $this->db->prepare($sql);
+            $st->bindParam(":id_producto", $id_producto, PDO::PARAM_STR);
+            $st->bindParam(":id_venta", $id_venta, PDO::PARAM_STR);
+            $st->execute();
+            $monto = $st->fetch(PDO::FETCH_ASSOC);
+
+            $sql = "UPDATE pago 
+                    SET monto = monto - :monto
+                    WHERE id_venta = :id_venta";
+            $st = $this->db->prepare($sql);
+            $st->bindParam(":monto", $monto['monto'], PDO::PARAM_STR);
+            $st->bindParam(":id_venta",$id_venta, PDO::PARAM_INT);
+            $st->execute();
+            
+            $sql = "delete from venta_detalle where id_venta = :id_venta AND id_producto = :id_producto";
+            $st = $this->db->prepare($sql);
+            $st->bindParam(":id_producto", $id_producto, PDO::PARAM_STR);
+            $st->bindParam(":id_venta", $id_venta, PDO::PARAM_STR);
+            $st->execute();
+            $rc = $st->rowCount();
+            
+            $this->db->commit();
+            return $rc;
+        } catch (PDOException $e) {
+            $this->db->rollBack();
+        }
+    }
+
+    public function newDetails($id, $data)
+    {
+        $this->db();
+
+        try {
+            $this->db->setAttribute(PDO::ATTR_AUTOCOMMIT, false);
+            $this->db->beginTransaction();
+            
+            $sql = "insert into venta_detalle (id_venta, id_producto, cantidad, precio_unitario) values (:id_venta,:id_producto,:cantidad,:precio_unitario)";
+            $st = $this->db->prepare($sql);
+            $st->bindParam(":id_venta", $id, PDO::PARAM_INT);
+            $st->bindParam(":id_producto", $data['id_producto'], PDO::PARAM_INT);
+            $st->bindParam(":cantidad", $data['cantidad'], PDO::PARAM_INT);
+            $st->bindParam(":precio_unitario", $data['precio_unitario'], PDO::PARAM_STR);
+            $st->execute();
+
+            $rc = $st->rowCount();
+
+            $sql = "UPDATE pago 
+                    SET monto = monto + :monto
+                    WHERE id_venta = :id_venta";
+
+            $monto = $data['cantidad'] * $data['precio_unitario'];
+
+            $st = $this->db->prepare($sql);
+            $st->bindParam(":monto", $monto, PDO::PARAM_STR);
+            $st->bindParam(":id_venta",$id, PDO::PARAM_INT);
+            $st->execute();
+            $rc = $st->rowCount();
+
+
+            $this->db->commit();
+            return $rc;
+        } catch (PDOException $e) {
+            $this->db->rollBack();
+        }
     }
 
 }

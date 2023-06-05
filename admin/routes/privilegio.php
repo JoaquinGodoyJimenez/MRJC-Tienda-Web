@@ -2,7 +2,8 @@
 require_once('../controllers/privilegio_controller.php');
 include_once('../views/header.php');
 include_once('../views/menu.php');
-//$privilegio -> validateRol('Administrador');
+
+$privilegio -> validateRol('Administrador');
 $action = (isset($_GET['action'])) ? $_GET['action'] : 'get';
 $id = (isset($_GET['id'])) ? $_GET['id'] : null;
 switch ($action) {

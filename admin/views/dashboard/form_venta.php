@@ -94,20 +94,6 @@
     </div>
 
     <div class="row">
-        <div class="col-1"></div>
-        <div class="col-4">
-            <label for="precio_unitario">Precio:</label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-4">
-            <input type="number" step="0.5" min="0" name="data[precio_unitario]" placeholder="Precio" class="form-control" value="<?php echo isset($data[0]['precio_unitario']) ? $data[0]['precio_unitario'] : ''; ?>" required />
-        </div>
-    </div>
-
-    <div class="row">
         <p></p>
     </div>
 
