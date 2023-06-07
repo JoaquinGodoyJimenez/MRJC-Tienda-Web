@@ -133,10 +133,10 @@ class Sistema{
             if ($_SESSION['validado']) {
                 if (isset($_SESSION['roles'])) {
                     if (!in_array($rol, $_SESSION['roles'])) {
-                        $this->killApp('No tienes el rol adecuado');
+                        $this->kill2('No tienes el rol adecuado');
                     }
                 } else {
-                    $this->killApp('No tienes roles asignados');
+                    $this->kill2('No tienes roles asignados');
                 }
             } else {
                 $this->killApp('No estas validado');
@@ -157,10 +157,10 @@ class Sistema{
                 }
             }
             if (!$privilegioEncontrado) {
-                $this->killApp('No tienes el privilegio adecuado');
+                $this->kill2('No tienes el privilegio adecuado');
             }
         } else {
-            $this->killApp('No tienes privilegios asignados');
+            $this->kill2('No tienes privilegios asignados');
         }
     } else {
         $this->killApp('No estás validado');
@@ -174,6 +174,14 @@ class Sistema{
         }
     }
 
+    public function kill2($mensaje)
+    {
+        ob_end_clean();
+        include("../views/header_error.php");
+        $this->flash('danger', $mensaje);
+        include("../views/footer_error.php");
+        die();
+    }
 
     public function killApp($mensaje)
     {
